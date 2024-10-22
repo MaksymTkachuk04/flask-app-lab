@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Моє резюме{% endblock %}</title>
+    <title>{% block title %}base html{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header>
+    <header class="bg-dark text-white text-center py-3">
         <h1>Моє Резюме</h1>
         {% include 'navigation.html' %}
     </header>
 
-    <div class="container">
+    <div class="container mt-4">
         {% block content %}{% endblock %}
     </div>
 
