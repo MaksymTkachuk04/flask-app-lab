@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Резюме{% endblock %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li><a href="#about">Про себе</a></li>
+        <li><a href="#education">Освіта</a></li>
+        <li><a href="#skills">Навички</a></li>
+        <li><a href="#experience">Досвід роботи</a></li>
+    </ul>
+</nav>
+
+<section id="about">
+    <h2>Про себе</h2>
+    <p>Я студент Прикарпатського Національного університету, спеціальності '121 Інженерія програмного забезпечення'</p>
+</section>
+<section id="education">
+    <h2>Освіта</h2>
+    <ul>
+        <li>Бакалавр Інженерії програмного забезпечення (2022-2026)</li>
+    </ul>
+</section>
+<section id="skills">
+    <h2>Навички</h2>
+    <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Python, Flask</li>
+    </ul>
+</section>
+<section id="experience">
+    <h2>Досвід роботи</h2>
+    <ul>
+        <li>Розробка веб-додатків для компанії Fxuds</li>
+    </ul>
+    <img src="{{ url_for('static', filename='image/image.jpg') }}" alt="Image not found">
+</section>
+{% endblock %}
