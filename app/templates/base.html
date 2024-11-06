@@ -13,13 +13,34 @@
             <h1>Flask Application</h1>
         </div>
     </header>
+
+    {% with msg = get_flashed_messages(with_categories=True) %}
+    <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+    {% if msg %}
+        {% for category, message in msg %}
+            <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     
+    <nav>
+        <a href="/homepage">Головна</a>
+        <a href="/users/profile">Профіль</a>
+        <a href="/users/login">Вхід</a>
+        <a href="/post">Пости</a>
+    </nav>
+
     <div class="container">
         {% block content %}
         
         {% endblock %}
     </div>
-    <footer class="bg-light text-center py-4">
+    <footer class="{{ theme }}-theme">
         <p>&copy; 2024 Flask App. All rights reserved.</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

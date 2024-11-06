@@ -1,7 +1,12 @@
 from flask import Flask
-from .views import users_bp
 
-def create_app():
-    app = Flask(__name__)
-    app.register_blueprint(users_bp)
-    return app
+
+app = Flask(__name__)
+app.config.from_pyfile("../config.py")
+
+from . import views
+
+from .posts import post_bp
+from .users import bp as user_bp
+app.register_blueprint(post_bp)
+app.register_blueprint(user_bp, url_prefix="/users")
