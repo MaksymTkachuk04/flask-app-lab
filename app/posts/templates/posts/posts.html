@@ -2,7 +2,18 @@
 
 {% block title %} POSTS {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">
+{% endblock %}
+
 {% block content %}
+<h1 class="myclass">Articles</h1>
+
+<div class="container mt-5"></div>
+
+<form action="{{ url_for('.add_post') }}" class="mb-4">
+    <button type="submit" class="btn btn-primary">Add post</button>
+</form>
 
 <div class="row">
     {% for post in posts %}
@@ -10,9 +21,10 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.content }}</p>
+                    <img src="{{ url_for('posts.static', filename='img/default.png') }}" id="image">
+                    <p class="card-text">{{ post.content | truncate(23) }}</p>
                     <p><strong>Category:</strong> {{ post.category }}</p>
-                    <p><strong>Published on:</strong> {{ post.publication_date }}</p>
+                    <p><strong>Published on:</strong> {{ post.publication_date }}</p>   
                     <p><strong>Author:</strong> {{ post.author }}</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
