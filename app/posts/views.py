@@ -2,6 +2,8 @@ from . import post_bp
 import json
 from flask import Blueprint, render_template, redirect, url_for, flash, abort, session, request
 from .forms import PostForm
+from app import db
+from .models import Post
 
 posts = [
     {"id": 1, 'title': 'My First Post', 'content': 'This is the content of my first post.', 'author': 'John Doe'},
@@ -34,6 +36,8 @@ def add_post():
             "publication_date": form.publish_date.data.isoformat(),
             "author": session.get('username', 'Unknown')
         }
+        db.session.add(post_data)
+        db.session.commit()
         save_post(post_data)
         flash('Post added successfully!', 'success')
         return redirect(url_for('posts.add_post'))
